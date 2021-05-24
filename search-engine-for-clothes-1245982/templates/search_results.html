@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="container">
+    <form class="mt-5" name="search" action="/search_results">
+      <div class="col-6 mx-auto input-group">
+        <input type="text" class="form-control" name="search" placeholder="search...">
+        <button type="submit" class="btn btn-success">Search</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="col mt-5"></div>
+  
+  <div class="container">
+    
+    {% for link in search_results %}
+    <div class="list-news">
+      <div align="center" class="img-content">
+          <img src="{{ link.image }}" alt="图片">
+      </div>
+      <div align="center" class="right-content">
+          <a href="http://127.0.0.1:5000/recommend_results/{{link.id}}">recommed similar clothes</a>
+          <p style=font-size:10px>id:{{ link.id }}</p>
+	        <hr />
+	        <p style=font-size:10px>classification:{{ link.classification}}</p>
+	        <hr />
+	        <p style=font-size:10px>color: {{ link.color}} </p>
+	        <hr />
+	        <p style=font-size:10px>brand: {{ link.brand}} </p>
+          <hr />
+          <p style=font-size:10px>year_to_buy: {{ link.year_to_buy}} </p>
+          <hr />
+          <p style=font-size:10px>location: {{ link.location}} </p>
+          <hr />
+          <p style=font-size:10px>description: {{ link.description}} </p>
+	        <hr />
+      </div>
+  </div>
+    {% endfor %}
+    
+  </div>
+{% endblock %}
